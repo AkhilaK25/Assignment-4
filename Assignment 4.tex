@@ -1,0 +1,95 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage[cmex10]{amsmath}
+\usepackage{longtable}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\DeclareMathOperator*{\equals}{=}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+\def\inputGnumericTable{}                                 %%
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\bibliographystyle{IEEEtran}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+
+\newcommand{\question}{\noindent \textbf{Question: }}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+
+\begin{document}
+\title{ASSIGNMENT 4}
+\author{AKHILA, CS21BTECH11031}
+
+\maketitle
+\question
+Find the probability that when a hand of 7 cards is drawn from a well
+shuffled deck of 52 cards, it contains
+    \begin{enumerate}[label=(\roman{enumi})]
+		\item all Kings
+		\item 3 Kings
+		\item atleast 3 Kings
+    \end{enumerate}
+\solution
+Given that a hand of 7 cards is drawn from a well shuffled deck of 52 cards.\\
+Total number of possible hands $=\myvec{52 \\ 7}$\\
+
+Let's a random variable $X$ such that \\
+$X\in \cbrak{0,1,2,3,4}$ denote the outcome of the given problem.
+\begin{table}[H]
+\input{table.tex}
+	\caption{Random variable and Event distribution}
+	\label{tab1}
+\end{table}
+\begin{enumerate}[label=(\roman{enumi})]
+      \item Number of hands with 4 Kings $=\myvec{4 \\ 4}\times \myvec{48 \\ 3}$\\
+      (Since the other 3 cards must be choosen from remaining 48 cards.)\\
+      The probability that hand of 7 cards contains all the kings is
+\begin{align}
+		 &\pr{X=4}=\frac{\myvec{4 \\ 4}\times \myvec{48 \\ 3}}{\myvec{52 \\ 7}}\\
+		 &=\frac{1}{7735}
+\end{align}
+      \item Number of hands with 3 Kings $=\myvec{4 \\ 3}\times\myvec{48 \\ 4}$\\
+      (Since the other 4 cards must be choosen from remaining 48 cards.)\\
+      The probability that hand of 7 cards contains 3 kings is
+\begin{align}
+		 &\pr{X=3}=\frac{\myvec{4 \\ 3}\times \myvec{48 \\ 4}}{\myvec{52 \\ 7}}\\
+		 &=\frac{9}{1547}
+\end{align}
+      \item The probability that hand of 7 cards contains atleast 3 kings is
+\begin{align}
+     &\pr{X\geq 3}=\pr{X=3}+\pr{X=4}\\
+	 &=\frac{1}{7735}+\frac{9}{1547}\\
+	 &=\frac{46}{7735}
+\end{align}
+\end{enumerate}
+\end{document}
